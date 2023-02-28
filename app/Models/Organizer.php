@@ -21,8 +21,4 @@ class Organizer extends Model
     public function event() {
         return $this->hasMany(Event::class);
     }
-
-    public function role() {
-        return $this->belongsTo(Role::class);
-    }
 }

@@ -16,16 +16,26 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('hall_id');
-            $table->unsignedBigInteger('ticket_id');
-            $table->unsignedBigInteger('organizer_id');
             $table->string('name');
             $table->text('description');
             $table->date('date');
+            $table->text('type');
 
-            $table->foreign('hall_id')->references('id')->on('halls');
-            $table->foreign('ticket_id')->references('id')->on('tickets');
-            $table->foreign('organizer_id')->references('id')->on('organizers');
+            $table->unsignedBigInteger('hall_id');
+            $table->foreign('hall_id')
+            ->references('id')
+            ->on('halls');
+
+            $table->unsignedBigInteger('ticket_id');
+            $table->foreign('ticket_id')
+            ->references('id')
+            ->on('tickets');
+
+            $table->unsignedBigInteger('organizer_id');
+            $table->foreign('organizer_id')
+            ->references('id')
+            ->on('organizers');
+
 
             $table->timestamps();
         });

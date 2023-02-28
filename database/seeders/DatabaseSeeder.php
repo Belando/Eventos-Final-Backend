@@ -35,13 +35,16 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now()->format('Y-m-d H:i:s'),
                 'updated_at' => now()->format('Y-m-d H:i:s')
             ]
+            
         ]);
 
-        \App\Models\User::factory(100)->create();
-        \App\Models\Event::factory(50)->create();
-        \App\Models\Organizer::factory(20)->create();
-        \App\Models\Hall::factory(30)->create();
-        \App\Models\Ticket::factory(20)->create();
+        \App\Models\User::factory(10)->create();
+        // \App\Models\Hall::factory(30)->create();
+        // \App\Models\Ticket::factory(20)->create();
+        // \App\Models\Organizer::factory(20)->create();
+        // \App\Models\Event::factory(50)->create();
+        
+        
         
     }
 }

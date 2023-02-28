@@ -11,7 +11,7 @@ class Hall extends Model
 
     protected $fillable = [
         'name',
-        'place',
+        'address',
         'description',
     ];
 
@@ -20,10 +20,8 @@ class Hall extends Model
     }
     
     public function event() {
-        return $this->hasMany(Event::class);
+        return $this->belongsTo(Event::class);
     }
 
-    public function role() {
-        return $this->belongsTo(Role::class);
-    }
+    
 }

@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Hall>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
  */
-class HallFactory extends Factory
+class RoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,10 @@ class HallFactory extends Factory
     public function definition()
     {
         return [
-            "name" => $this->faker->name(),
-            "city" => $this->faker->city(),
-            "address" => $this->faker->address(),
+            'name' => "admin",
+            'created_at' => now(),
+            'updated_at' => now(),
+            
         ];
     }
 }

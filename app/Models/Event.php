@@ -10,13 +10,21 @@ class Event extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'date',
         'description',
+        'type',
+        'hall_id',
+        'organizer_id',
+        'ticket_id'
     ];
 
     public function getDescriptionAttribute($value){
         return substr($value, 1, 120);
+    }
+
+    public function getTypeAttribute($value){
+        return substr($value, 1, 12);
     }
 
     public function organizer() {
@@ -28,11 +36,11 @@ class Event extends Model
     }
 
     public function ticket() {
-        return $this->hasMany(Ticket::class);
+        return $this->belongsToMany(Ticket::class);
     }
 
     public function user() {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 
 }

@@ -10,7 +10,7 @@ class Ticket extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title',
+        'name',
         'seat',
         'date'  
     ];
@@ -20,7 +20,7 @@ class Ticket extends Model
     }
 
     public function event() {
-        return $this->belongsTo(Event::class);
+        return $this->hasMany(Event::class);
     }
 
     public function user() {

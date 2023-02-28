@@ -19,7 +19,8 @@ class OrganizerFactory extends Factory
         return [
             'name' => $this-> faker->name(),
             'description'=> $this-> faker->text(25),
-            'rol_id'=>2,
+            'email' => fake()->unique()->safeEmail(),
+            'role_id'=>2,
         ];
     }
 }

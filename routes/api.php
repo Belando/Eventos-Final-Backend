@@ -1,12 +1,13 @@
 <?php
 
-use App\Models\Event;
-use App\Models\Hall;
-use App\Models\Organizer;
-use App\Models\User;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController as Event;
+use App\Http\Controllers\AuthController as Auth;
+use App\Http\Controllers\HallController as Hall;
+use App\Http\Controllers\OrganizerController as Organizer;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //Events
 
-Route::get('events',[Event::class, 'index']);
+Route::get('/events',[Event::class, 'index']);
 
 Route::get('events/name={value}',[Event::class, 'getByName']);  
+
+Route::get('events/type={value}',[Event::class, 'getByType']); 
 
 Route::get('events/{id}',[Event::class, 'getById']); 
 
@@ -37,8 +40,6 @@ Route::post('events',[Event::class, 'store']);
 Route::delete('events/{id}',[Event::class, 'destroy']);
 
 Route::put('events',[Event::class, 'update']);
-
-Route::post('books/{event_id}',[Event::class, 'store']);
 
 //Usuarios_auth
 
@@ -50,7 +51,7 @@ Route::post('logout',[Auth::class, 'logout']);
 
 //Admin_auth
 
-Route::middleware(['auth:sanctum','solo_usuario_administrador'])->get('users',[User::class, 'index']);
+Route::middleware(['auth:sanctum','solo_usuario_administrador'])->get('users',[Auth::class, 'index']);
 
 Route::middleware(['auth:sanctum','solo_usuario_administrador'])->get('organizers',[Organizer::class, 'index']);
 

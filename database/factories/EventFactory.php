@@ -20,6 +20,10 @@ class EventFactory extends Factory
             'date' => $this->faker->date(),
             'name' => $this->faker->name(),
             'description' => $this->faker->text(),
+            'type'=> $this -> faker -> text(),
+            'hall_id'=>rand(1,3),
+            'ticket_id'=>rand(1,3),
+            'organizer_id'=>rand(1,3),
         ];
     }
 }
